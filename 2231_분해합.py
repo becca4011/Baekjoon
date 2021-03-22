@@ -5,7 +5,7 @@ if len(str(N)) == 1 and N % 2 != 0:
 else:
     for i in range(1, N):
         # 방법 1
-        nsum = list(map(int, list(str(i))))
+        nsum = map(int, list(str(i)))
         lsum = i + sum(nsum)
 
         """
