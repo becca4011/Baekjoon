@@ -9,23 +9,27 @@ while True:
         break
 
     for s in st:
+        if s == ')' and len(stack) == 0 or s == ']' and len(stack) == 0:
+            stack.append(s)
+            break
+
         if s == '(' or s == '[':
             stack.append(s)
-        elif s == ')':
-            if stack[-1] == '(':
-                stack.pop()
-            else:
-                res = 0
-                break
-        elif s == ']':
-            if stack[-1] == '[':
-                stack.pop()
-            else:
-                res = 0
-                break
 
-    if res == 0:
-        print("No")
+        elif s == ')' and stack[-1] != '(':
+            stack.append(s)
+            break
+
+        elif s == ']' and stack[-1] != '[':
+            stack.append(s)
+            break
+
+        elif s == ')' or s == ']':
+            stack.pop()
+
+    if len(stack) == 0:
+        print("yes")
     else:
-        print("Yes")
+        print("no")
 
+    stack = []
