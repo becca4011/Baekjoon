@@ -59,6 +59,7 @@ for i in range(N - 7):
                     cnt.append(chess_check(cut_chess))
                     cut_chess = []
 
+print(cnt)
 print(min(cnt))
 
 # 체스판이 8*8 보다 클 경우, 모두 8*8로 잘라서 가장 작은 카운트를 출력
