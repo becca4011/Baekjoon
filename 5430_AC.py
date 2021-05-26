@@ -1,5 +1,12 @@
-# 미해결
 import sys
+from collections import deque
+
+# 출력을 형식에 맞게 해야 함
+def prt(x):
+    print("[", end="")
+    for k in range(len(x) - 1):
+        print(x[k], end=",")
+    print(str(x[len(x) - 1]) + "]")
 
 T = int(sys.stdin.readline())
 
@@ -8,28 +15,29 @@ for i in range(T):
     n = int(sys.stdin.readline())
     x = sys.stdin.readline().rstrip()
     if x != "[]":
-        x = list(map(int, x[1:len(x)-1].split(",")))
+        x = deque(map(int, x[1:len(x)-1].split(",")))
     else:
-        print("error")
-        continue
+        x = deque()
 
-    prv = ""
+    reverse = False
     for j in p:
-        if j == 'R' and prv != 'R':
-            x.reverse()
-            prv = ""
-            #print("A :", x)
-        else:
-            prv = p
+        if j == 'R':
+            reverse = not reverse
         
         if j == 'D' and len(x) != 0:
-            x.pop(0)
-            #print("B :", x)
-        elif len(x) == 0:
+            if reverse:
+                x.pop()
+            else:
+                x.popleft()
+        elif j == 'D' and len(x) == 0:
+            print("error")
             break
-        #print(prv)
 
-    if len(x) == 0:
-        print("error")
     else:
-        print(x)
+        if len(x) == 0:
+            print("[]")
+        elif not reverse:
+            prt(x)
+        else:
+            x.reverse()
+            prt(x)
