@@ -1,4 +1,5 @@
 from collections import deque
+import sys
 
 def DFS(graph, root):
     visited = []
@@ -30,10 +31,10 @@ def BFS(graph, root):
 
   
 graph = {}
-n = input().split(' ')
+n = sys.stdin.readline().split()
 node, edge, start = [int(i) for i in n]
 for i in range(edge):
-    edge_info = input().split(' ')
+    edge_info = sys.stdin.readline().split()
     n1, n2 = [int(j) for j in edge_info]
     if n1 not in graph:
         graph[n1] = [n2]
