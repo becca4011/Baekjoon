@@ -1,6 +1,7 @@
 from collections import deque
 import sys
 
+
 def DFS(graph, root):
     visited = []
     stack = [root]
@@ -14,6 +15,7 @@ def DFS(graph, root):
                 temp.sort(reverse=True)
                 stack += temp
     return " ".join(str(i) for i in visited)
+
 
 def BFS(graph, root):
     visited = []
@@ -29,7 +31,7 @@ def BFS(graph, root):
                 queue += temp
     return " ".join(str(i) for i in visited)
 
-  
+
 graph = {}
 n = sys.stdin.readline().split()
 node, edge, start = [int(i) for i in n]
