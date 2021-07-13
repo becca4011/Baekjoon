@@ -1,10 +1,10 @@
 import sys
+from collections import deque
 
 
 visited = list()
+"""
 cnt = 0
-
-
 def DFS(graph, root):
     visited.append(root)
     global cnt
@@ -14,6 +14,23 @@ def DFS(graph, root):
             visited.append(v)
             cnt += 1
             DFS(graph, v)
+"""
+
+
+def BFS(graph, root):
+    cnt = 0
+    queue = deque()
+    queue.append(root)
+    visited.append(root)
+
+    while queue:
+        q = queue.popleft()
+        for v in graph[q]:
+            if v not in visited:
+                visited.append(v)
+                queue.append(v)
+                cnt += 1
+    return cnt
 
 
 com = int(sys.stdin.readline())
@@ -33,5 +50,6 @@ for i in range(pair):
     elif n1 not in graph[n2]:
         graph[n2].append(n1)
 
-DFS(graph, 1)
-print(cnt)
+# DFS(graph, 1)
+# print(cnt)
+print(BFS(graph, 1))
