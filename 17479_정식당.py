@@ -26,7 +26,7 @@ for i in range(N):
     menu = sys.stdin.readline().rstrip()
     if menu in dt_A.keys():
         A_price += dt_A[menu]
-    elif menu in dt_B.keys() and A_price >= 20000:
+    elif menu in dt_B.keys():  #  and A_price >= 20000 이거 때문에 틀림
         B_price += dt_B[menu]
         B_cnt += 1
     else:
@@ -38,7 +38,7 @@ if A_price < 20000 and B_cnt > 0:
 else:
     if A_price + B_price < 50000 and C_cnt > 0:
         res = "No"
-    elif A_price + B_price >= 50000 and C_cnt > 1:
+    elif C_cnt > 1:
         res = "No"
 
 print(res)
