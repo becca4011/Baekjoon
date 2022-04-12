@@ -1,6 +1,3 @@
-import collections
-from ipaddress import collapse_addresses
-from itertools import combinations
 import sys
 from itertools import combinations
 
